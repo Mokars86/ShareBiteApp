@@ -1,0 +1,8 @@
+{
+  "name": "ShareBite",
+  "description": "A community-driven food sharing platform to reduce waste and help neighbors.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
