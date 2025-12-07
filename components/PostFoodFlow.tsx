@@ -93,10 +93,10 @@ export const PostFoodFlow: React.FC<PostFoodFlowProps> = ({ onPostSuccess, onCan
   };
 
   return (
-    <div className="flex flex-col h-full bg-white pb-20">
-      <div className="p-4 border-b flex items-center justify-between">
-        <button onClick={onCancel} className="text-gray-500">Cancel</button>
-        <h2 className="font-bold text-lg">Post Food</h2>
+    <div className="flex flex-col h-full bg-white dark:bg-gray-900 pb-20 transition-colors duration-300">
+      <div className="p-4 border-b dark:border-gray-800 flex items-center justify-between">
+        <button onClick={onCancel} className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">Cancel</button>
+        <h2 className="font-bold text-lg text-gray-900 dark:text-white">Post Food</h2>
         <div className="w-10"></div>
       </div>
 
@@ -104,21 +104,21 @@ export const PostFoodFlow: React.FC<PostFoodFlowProps> = ({ onPostSuccess, onCan
         {/* Progress Bar */}
         <div className="flex mb-8 gap-2">
           {[1, 2, 3].map(i => (
-            <div key={i} className={`h-1 flex-1 rounded-full ${step >= i ? 'bg-eco-600' : 'bg-gray-200'}`} />
+            <div key={i} className={`h-1 flex-1 rounded-full ${step >= i ? 'bg-eco-600' : 'bg-gray-200 dark:bg-gray-700'}`} />
           ))}
         </div>
 
         {step === 1 && (
-          <div className="flex flex-col items-center justify-center h-64 border-2 border-dashed border-gray-300 rounded-xl bg-gray-50 relative">
+          <div className="flex flex-col items-center justify-center h-64 border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-800 relative">
             {loading ? (
               <div className="text-center">
                 <Loader2 className="w-10 h-10 text-eco-600 animate-spin mx-auto mb-2" />
-                <p className="text-gray-600 font-medium">AI is analyzing freshness...</p>
+                <p className="text-gray-600 dark:text-gray-300 font-medium">AI is analyzing freshness...</p>
               </div>
             ) : (
               <>
                 <Camera className="w-12 h-12 text-gray-400 mb-2" />
-                <p className="text-gray-500 mb-4">Take a photo of the food</p>
+                <p className="text-gray-500 dark:text-gray-400 mb-4">Take a photo of the food</p>
                 <button 
                   onClick={() => fileInputRef.current?.click()}
                   className="bg-eco-600 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-eco-700 transition"
@@ -151,47 +151,47 @@ export const PostFoodFlow: React.FC<PostFoodFlowProps> = ({ onPostSuccess, onCan
             )}
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Title</label>
               <input 
                 value={formData.title}
                 onChange={e => setFormData({...formData, title: e.target.value})}
-                className="w-full border rounded-lg p-2 focus:ring-2 focus:ring-eco-500 outline-none" 
+                className="w-full border dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-eco-500 outline-none" 
                 placeholder="e.g. Pasta Portion"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Quantity</label>
               <input 
                 value={formData.quantity}
                 onChange={e => setFormData({...formData, quantity: e.target.value})}
-                className="w-full border rounded-lg p-2 focus:ring-2 focus:ring-eco-500 outline-none" 
+                className="w-full border dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-eco-500 outline-none" 
                 placeholder="e.g. 2 Servings"
               />
             </div>
 
              <div className="grid grid-cols-2 gap-4">
-               <label className="flex items-center gap-2 border p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+               <label className="flex items-center gap-2 border dark:border-gray-700 p-3 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition">
                  <input 
                   type="checkbox" 
                   checked={formData.isHalal}
                   onChange={e => setFormData({...formData, isHalal: e.target.checked})}
-                  className="w-4 h-4 text-eco-600"
+                  className="w-4 h-4 text-eco-600 rounded bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
                  />
-                 <span className="text-sm">Halal</span>
+                 <span className="text-sm text-gray-700 dark:text-gray-300">Halal</span>
                </label>
-               <label className="flex items-center gap-2 border p-3 rounded-lg cursor-pointer hover:bg-gray-50">
+               <label className="flex items-center gap-2 border dark:border-gray-700 p-3 rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition">
                  <input 
                   type="checkbox" 
                   checked={formData.isVeg}
                   onChange={e => setFormData({...formData, isVeg: e.target.checked})}
-                  className="w-4 h-4 text-eco-600"
+                  className="w-4 h-4 text-eco-600 rounded bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
                  />
-                 <span className="text-sm">Vegetarian</span>
+                 <span className="text-sm text-gray-700 dark:text-gray-300">Vegetarian</span>
                </label>
              </div>
 
-             <button onClick={() => setStep(3)} className="w-full bg-eco-600 text-white py-3 rounded-xl font-bold mt-4 shadow-lg hover:bg-eco-700">
+             <button onClick={() => setStep(3)} className="w-full bg-eco-600 text-white py-3 rounded-xl font-bold mt-4 shadow-lg hover:bg-eco-700 transition">
                Next: Pickup Details
              </button>
           </div>
@@ -199,27 +199,27 @@ export const PostFoodFlow: React.FC<PostFoodFlowProps> = ({ onPostSuccess, onCan
 
         {step === 3 && (
           <div className="space-y-6 animate-fade-in">
-             <div className="bg-orange-50 p-4 rounded-lg border border-orange-100 flex gap-3">
+             <div className="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg border border-orange-100 dark:border-orange-900/30 flex gap-3">
                 <AlertCircle className="w-5 h-5 text-warm-600 flex-shrink-0" />
-                <p className="text-sm text-warm-700">Please ensure food is hygienic and packed safely.</p>
+                <p className="text-sm text-warm-700 dark:text-warm-400">Please ensure food is hygienic and packed safely.</p>
              </div>
 
              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Pickup Location</label>
-                <div className="flex items-center gap-2 border rounded-lg p-2 bg-gray-50 text-gray-600">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Pickup Location</label>
+                <div className="flex items-center gap-2 border dark:border-gray-700 rounded-lg p-2 bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
                   <MapPin className="w-5 h-5 text-gray-400" />
                   <span>{formData.pickupLocation}</span>
                 </div>
              </div>
 
              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Pick up within (hours)</label>
-                <div className="flex items-center gap-2 border rounded-lg p-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Pick up within (hours)</label>
+                <div className="flex items-center gap-2 border dark:border-gray-700 rounded-lg p-2 bg-white dark:bg-gray-800">
                   <Clock className="w-5 h-5 text-gray-400" />
                   <select 
                     value={formData.pickupTimeLimit}
                     onChange={e => setFormData({...formData, pickupTimeLimit: e.target.value})}
-                    className="flex-1 bg-transparent outline-none"
+                    className="flex-1 bg-transparent outline-none text-gray-900 dark:text-white"
                   >
                     <option value="1">1 Hour</option>
                     <option value="2">2 Hours</option>
@@ -230,15 +230,15 @@ export const PostFoodFlow: React.FC<PostFoodFlowProps> = ({ onPostSuccess, onCan
                 </div>
              </div>
 
-             <div className="pt-4 border-t">
+             <div className="pt-4 border-t dark:border-gray-800">
                <label className="flex items-start gap-3 cursor-pointer">
                  <input 
                   type="checkbox" 
                   checked={formData.safetyConfirmed}
                   onChange={e => setFormData({...formData, safetyConfirmed: e.target.checked})}
-                  className="mt-1 w-5 h-5 text-eco-600 rounded"
+                  className="mt-1 w-5 h-5 text-eco-600 rounded bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
                  />
-                 <span className="text-sm text-gray-700">
+                 <span className="text-sm text-gray-700 dark:text-gray-300">
                    I confirm this food is safe to eat, was prepared hygienically, and contains no spoiled ingredients.
                  </span>
                </label>
@@ -248,7 +248,7 @@ export const PostFoodFlow: React.FC<PostFoodFlowProps> = ({ onPostSuccess, onCan
               disabled={!formData.safetyConfirmed}
               onClick={handleSubmit} 
               className={`w-full py-3 rounded-xl font-bold mt-4 shadow-lg transition
-                ${formData.safetyConfirmed ? 'bg-eco-600 text-white hover:bg-eco-700' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
+                ${formData.safetyConfirmed ? 'bg-eco-600 text-white hover:bg-eco-700' : 'bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-500 cursor-not-allowed'}`}
              >
                Post Food Now
              </button>

@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
@@ -32,7 +33,7 @@
     </script>
     <style>
       body {
-        background-color: #f3f4f6;
+        @apply bg-gray-50 dark:bg-gray-950 transition-colors duration-200;
         -webkit-tap-highlight-color: transparent;
       }
       /* Hide scrollbar for clean UI in horizontal lists */
